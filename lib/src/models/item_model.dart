@@ -19,7 +19,7 @@ class ItemModel {
     : id = parsedJson['id'],
       deleted = parsedJson['deleted'] ?? false,
       type = parsedJson['type'],
-      by = parsedJson['by'],
+      by = parsedJson['by'] ?? '',
       time = parsedJson['time'],
       text = parsedJson['text'] ?? '',
       dead = parsedJson['dead'] ?? false,
@@ -28,7 +28,7 @@ class ItemModel {
       url = parsedJson['url'],
       score = parsedJson['score'],
       title = parsedJson['title'],
-      descendants = parsedJson['descendants'];
+      descendants = parsedJson['descendants'] ?? 0;
   
   ItemModel.fromDb(Map<String, dynamic> parsedJson)
     : id = parsedJson['id'],
@@ -47,19 +47,19 @@ class ItemModel {
   
   Map<String, dynamic> toMapForDb() {
     return <String, dynamic>{
-      'id': id,
-      'deleted': deleted ? 1 : 0,
-      'type': type,
-      'by': by,
-      'time': time,
-      'text': text,
-      'dead': dead ? 1 : 0,
-      'parent': parent,
-      'kids': jsonEncode(kids),
-      'url': url,
-      'score': score,
-      'title': title,
-      'descendants': descendants,
+      "id": id,
+      "type": type,
+      "by": by,
+      "time": time,
+      "text": text,
+      "parent": parent,
+      "url": url,
+      "score": score,
+      "title": title,
+      "descendants": descendants,
+      "dead": dead ? 1 : 0,
+      "deleted": deleted ? 1 : 0,
+      "kids": jsonEncode(kids),
     };
   }
 }

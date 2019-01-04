@@ -25,6 +25,10 @@ class StoriesBloc {
     _topIds.sink.add(ids);
   }
 
+  clearCache() {
+    return _repository.clearCache();
+  }
+
   _itemsTransformer() {
     // This function works similar to the es6 reduce
     // But triggers everytime there is an event
